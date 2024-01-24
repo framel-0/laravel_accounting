@@ -11,7 +11,7 @@ class StoreTransactionRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return true;
+        return false;
     }
 
     /**
@@ -22,11 +22,7 @@ class StoreTransactionRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'date' => ['required', 'date'],
-            'description' => ['required', 'string', 'min:10', 'max:225'],
-            'account_id' => ['required', 'integer', 'exists:accounts,id'],
-            'amount' => ['required', 'numeric', 'min:1'],
-            'is_debit' => ['required', 'integer'],
+            //
         ];
     }
 }

@@ -26,7 +26,7 @@ class StoreTransactionRequest extends FormRequest
             'description' => ['required', 'string', 'min:10', 'max:225'],
             'account_id' => ['required', 'integer', 'exists:accounts,id'],
             'amount' => ['required', 'numeric', 'min:1'],
-            'is_debit' => ['required', 'integer'],
+            'is_debit' => ['nullable', 'string', 'max:255'],
         ];
     }
 }

@@ -14,8 +14,7 @@ class Transaction extends Model
         'description',
         'account_id',
         'amount',
-        'is_debit',
-        'fiscal_year_id',
+        'is_debit'
     ];
 
     public function account()

@@ -2,14 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use Carbon\Carbon;
 use App\Models\Account;
-use App\Models\AuditTrail;
-use App\Models\FiscalYear;
 use App\Models\Transaction;
 use App\Http\Resources\TransactionResource;
 use App\Http\Requests\StoreTransactionRequest;
 use App\Http\Requests\UpdateTransactionRequest;
+use App\Models\AuditTrail;
 
 class TransactionController extends Controller
 {
@@ -42,19 +40,6 @@ class TransactionController extends Controller
         ]);
 
         $this->updateAccountBalance($transaction, $amount, $isDebit);
-    }
-
-    function getCurrentFiscalYear()
-    {
-        $today = Carbon::today();
-        $currentYear = $today->year;
-        $startMonth = 1; // Assuming the fiscal year starts in January
-
-        if ($today->month < $startMonth) {
-            $currentYear--;
-        }
-
-        return FiscalYear::where('name', '=', $currentYear . '-' . ($currentYear + 1))->first();
     }
 
     function updateAccountBalance($transaction, $amount, $isDebit)

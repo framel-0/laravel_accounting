@@ -11,12 +11,9 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('audit_trails', function (Blueprint $table) {
+        Schema::create('fiscal_years', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('transaction_id')->constrained('transactions');
-            $table->timestamp('date')->default(now());
-            $table->decimal('old_balance', 15, 4);
-            $table->decimal('new_balance', 15, 4);
+            $table->string('name');
             $table->timestamps();
         });
     }
@@ -26,6 +23,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('audit_trails');
+        Schema::dropIfExists('fiscal_years');
     }
 };

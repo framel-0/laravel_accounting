@@ -14,18 +14,12 @@ class Transaction extends Model
         'description',
         'account_id',
         'amount',
-        'is_debit',
-        'fiscal_year_id',
+        'is_debit'
     ];
 
     public function account()
     {
         return $this->belongsTo(Account::class, 'account_id');
-    }
-
-    public function fiscalYear()
-    {
-        return $this->belongsTo(FiscalYear::class);
     }
 
 }
